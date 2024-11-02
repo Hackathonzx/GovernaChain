@@ -25,12 +25,18 @@ SECRET_KEY = 'django-insecure-@1k%ho=w!f0d*w&j=5ob7oby#vzchy6mmx5m4(t#5z)q3p3wvc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+
+
+    "localhost",
+    "governachain.onrender.com"
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'web',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
