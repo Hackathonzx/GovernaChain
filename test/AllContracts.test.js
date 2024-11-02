@@ -84,10 +84,10 @@ describe("All Contracts", function () {
 
         it("Should calculate voting power", async function () {
             await stakingAndIncentive.stake(100);
-            await reputationSystem.reward(owner.address, 50);
+            await reputationSystem.reward(owner.address, 50); // Ensure reputation points are rewarded
             const votingPower = await stakingAndIncentive.calculateVotingPower(owner.address);
-            expect(votingPower).to.equal(150);
-        });
+            expect(votingPower).to.equal(150); // Correctly asserts the expected value
+        });        
     });
 
     describe("VotingMechanism", function () {

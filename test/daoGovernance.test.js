@@ -1,4 +1,3 @@
-// test/daoGovernance.test.js
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -53,9 +52,9 @@ describe("DAOGovernance", function () {
 
     describe("Proposal Management", function () {
         it("Should create a proposal", async function () {
-            await daoGovernance.createProposal("Test Proposal");
-            const proposal = await proposalManagement.proposals(0);
-            expect(proposal.description).to.equal("Test Proposal");
+            await daoGovernance.createProposal("Proposal Title", owner.address); // Use valid address
+            const proposal = await daoGovernance.proposals(0);
+            expect(proposal.title).to.equal("Proposal Title");
         });
 
         it("Should allow voting on a proposal", async function () {

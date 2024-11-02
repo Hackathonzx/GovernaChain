@@ -14,8 +14,9 @@ contract StakingAndIncentive {
         reputation[_member] += points;
     }
 
-    function calculateVotingPower(address member) external view returns (uint256) {
-        // Logic to calculate voting power based on staking and reputation
-        return stakes[member] + reputation[member];
-    }
+    function calculateVotingPower(address voter) public view returns (uint256) {
+    uint256 stakedAmount = stakes[voter];
+    uint256 reputationPoints = reputation[voter]; // Assuming this exists
+    return stakedAmount + reputationPoints;
+   }  
 }
