@@ -94,16 +94,23 @@ cd GovernaChain
 
 # Dependencies and Installation
 # Dependencies:
-Solidity Version: ^0.8.0
-Hardhat: For local development and testing
+- Solidity Version: ^0.8.0
+- Hardhat: For local development and testing
+
 npm install --save-dev hardhat
-Chai: Assertion library for testing
+- Chai: Assertion library for testing
+
 npm install chai
-Ethers.js: For interacting with Ethereum
+- Ethers.js: For interacting with Ethereum
+
 npm install ethers
-Chainlink:
+
+- Chainlink:
+
 npm install @chainlink/contracts: For utilizing Chainlink CCIP for cross-chain interoperability.
-Chainlink CCIP (Cross-Chain Interoperability Protocol) for cross-chain data transmission.
+
+- Chainlink CCIP (Cross-Chain Interoperability Protocol) for cross-chain data transmission.
+
 npm install @chainlink/ccip
 
 # Installation:
@@ -129,23 +136,29 @@ All core functionalities were thoroughly tested, with all of the tests passing s
 
 Here are the deplyed script:
 
-VotingMechanism deployed to: 0xE9B21a68b58584Ee399C2eC95885628D3472B9C1
-StakingAndIncentive deployed to: 0xd3421C39343829ec2CB27e3Ddd834a0714411DFc
-ConflictResolution deployed to: 0x9d0CF830BED49284679F39bD88059D9534B2Fdc7
-ProposalManagement deployed to: 0x79969Ef250514Fa55AbF8589fe8842605f3b231d
-CrossChainGovernance deployed to: 0xa56059F30bacA70C64e186518A990C549C6b03c1
-ReputationSystem deployed to: 0x6AD88342995D8De2B6933cEC1ac6036d2744edc9
-DAOGovernance deployed to: 0x6c8780eAb44017A65Cb5B1649D43aa246aD45c43
+- VotingMechanism deployed to: 0xE9B21a68b58584Ee399C2eC95885628D3472B9C1
+- StakingAndIncentive deployed to: 0xd3421C39343829ec2CB27e3Ddd834a0714411DFc
+- ConflictResolution deployed to: 0x9d0CF830BED49284679F39bD88059D9534B2Fdc7
+- ProposalManagement deployed to: 0x79969Ef250514Fa55AbF8589fe8842605f3b231d
+- CrossChainGovernance deployed to: 0xa56059F30bacA70C64e186518A990C549C6b03c1
+- ReputationSystem deployed to: 0x6AD88342995D8De2B6933cEC1ac6036d2744edc9
+- DAOGovernance deployed to: 0x6c8780eAb44017A65Cb5B1649D43aa246aD45c43
 
 
 # Contributing
 - Fork the Repository:
 - Create a New Branch:
+
 git checkout -b feature/your-feature
+
 - Make Changes and Commit:
+
 git add .
+
 git commit -m "Add feature"
+
 Push Changes:
+
 git push origin feature/your-feature
 
 # License
@@ -153,6 +166,7 @@ git push origin feature/your-feature
 
 # Acknowledgments
 futhmah456@gmail.com
+
 nathfavour02@gmail.com
 
 
