@@ -1,182 +1,154 @@
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verisupply</title>
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <title>DAO Governance Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #000000, #654321);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #fff;
+        }
 
-    :root {
-        --background-color: #ffffff;
-        --text-color: #000000;
-        --card-background: orange;
-    }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    [data-theme="dark"] {
-        --background-color: #121212;
-        --text-color: #ffffff;
-        --card-background: orange;
-    }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            text-align: center;
+        }
 
-    body {
-        background-color: var(--background-color);
-        color: var(--text-color);
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        background-color: var(--card-background);
-    }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
 
-    nav {
-        display: flex;
-        justify-content: center;
-        padding: 1rem;
-        background-color: var(--card-background);
-    }
+        .wallet-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #654321;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
 
-    nav button {
-        margin: 0 0.5rem;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-    }
+        .wallet-button:hover {
+            background: #856c4d;
+        }
 
-    main {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        padding: 1rem;
-    }
+        .proposal {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
 
-    .role-section {
-        display: none;
-    }
+        .proposal h2 {
+            margin-top: 0;
+        }
 
-    .role-section.active {
-        display: block;
-    }
+        .vote-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
 
-    .card {
-        background-color: var(--card-background);
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        .vote-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
 
-    footer {
-        text-align: center;
-        padding: 1rem;
-        background-color: var(--card-background);
-    }
+        .vote-button.yes {
+            background: #28a745;
+            color: #fff;
+        }
 
+        .vote-button.no {
+            background: #dc3545;
+            color: #fff;
+        }
+
+        .vote-button:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Verisupply Dashboard</h1>
-        <div class="theme-toggle">
-            <label for="dark-mode-toggle">Dark Mode</label>
-            <input type="checkbox" id="dark-mode-toggle">
-        </div>
+        <h1>DAO Governance Platform</h1>
     </header>
-    <nav>
-        <button onclick="switchRole('manufacturer')">Manufacturer</button>
-        <button onclick="switchRole('transporter')">Transporter</button>
-        <button onclick="switchRole('retailer')">Retailer</button>
-    </nav>
-    <main>
-        <section id="manufacturer" class="role-section">
-            <h2>Manufacturer View</h2>
-            <div class="card">Product Tracking Information</div>
-            <div class="card">Alerts</div>
-            <div class="card">QR Code Verification</div>
-            <div class="card">
-                <h3>Temperature Monitoring</h3>
-                <canvas id="temperatureChart"></canvas>
+    <div class="container">
+        <button class="wallet-button" onclick="connectWallet()">Connect Wallet</button>
+        <div class="proposal">
+            <h2>Proposal 1: Increase Staking Rewards</h2>
+            <p>Description: This proposal aims to increase the staking rewards by 10% to incentivize more participation.</p>
+            <div class="vote-buttons">
+                <button class="vote-button yes" onclick="vote('yes', 1)">Vote Yes</button>
+                <button class="vote-button no" onclick="vote('no', 1)">Vote No</button>
             </div>
-        </section>
-        <section id="transporter" class="role-section">
-            <h2>Transporter View</h2>
-            <div class="card">Product Tracking Information</div>
-            <div class="card">Alerts</div>
-            <div class="card">QR Code Verification</div>
-            <div class="card">
-                <h3>GPS Tracking</h3>
-                <div id="map"></div>
+        </div>
+        <div class="proposal">
+            <h2>Proposal 2: Implement New Governance Model</h2>
+            <p>Description: This proposal suggests implementing a new governance model to enhance decision-making processes.</p>
+            <div class="vote-buttons">
+                <button class="vote-button yes" onclick="vote('yes', 2)">Vote Yes</button>
+                <button class="vote-button no" onclick="vote('no', 2)">Vote No</button>
             </div>
-        </section>
-        <section id="retailer" class="role-section">
-            <h2>Retailer View</h2>
-            <div class="card">Product Tracking Information</div>
-            <div class="card">Alerts</div>
-            <div class="card">QR Code Verification</div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Supply Chain Dashboard</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <!-- <script src="js/script.js"></script> -->
+        </div>
+        <div class="proposal">
+            <h2>Proposal 3: Reduce Transaction Fees</h2>
+            <p>Description: This proposal aims to reduce transaction fees by 5% to make the platform more accessible.</p>
+            <div class="vote-buttons">
+                <button class="vote-button yes" onclick="vote('yes', 3)">Vote Yes</button>
+                <button class="vote-button no" onclick="vote('no', 3)">Vote No</button>
+            </div>
+        </div>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
     <script>
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const roleSections = document.querySelectorAll('.role-section');
-
-        darkModeToggle.addEventListener('change', () => {
-            document.documentElement.setAttribute('data-theme', darkModeToggle.checked ? 'dark' : 'light');
-        });
-
-        window.switchRole = (role) => {
-            roleSections.forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(role).classList.add('active');
-        };
-
-        // Initialize the default view
-        switchRole('manufacturer');
-
-        // Example of initializing a Chart.js chart
-        const ctx = document.getElementById('temperatureChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'Temperature',
-                    data: [0, 10, 5, 2, 20, 30, 45],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+        async function connectWallet() {
+            if (window.ethereum) {
+                try {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const web3 = new Web3(window.ethereum);
+                    const accounts = await web3.eth.getAccounts();
+                    alert(`Connected: ${accounts[0]}`);
+                } catch (error) {
+                    console.error("User denied account access");
                 }
+            } else {
+                alert("Please install MetaMask or connect wallet!");
             }
-        });
+        }
 
-        // Example of initializing a Leaflet map
-        const map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-    });
-
+        function vote(choice, proposalId) {
+            alert(`You voted ${choice} on proposal ${proposalId}`);
+            // Implement the vote logic here
+        }
     </script>
-
 </body>
 </html>
