@@ -1,33 +1,62 @@
 const { ethers } = require("hardhat");
-require('dotenv').config();
 
 async function main() {
     const [deployer] = await ethers.getSigners();
     
     console.log("Deploying contracts with the account:", deployer.address);
 
-    // Deploy DIDRegistry contract
-    const DIDRegistry = await ethers.getContractFactory("DIDRegistry");
-    const didRegistry = await DIDRegistry.deploy();
-    await didRegistry.waitForDeployment(); // Updated for ethers v6
-    console.log("DIDRegistry deployed to:", await didRegistry.getAddress()); // Updated for ethers v6
+    // Deploy contracts
+    const VotingMechanism = await ethers.getContractFactory("VotingMechanism");
+    const votingMechanism = await VotingMechanism.deploy();
+    await votingMechanism.waitForDeployment();
+    console.log("VotingMechanism deployed to:", await votingMechanism.getAddress());
 
-    // Deploy CredentialNFT contract
-    const CredentialNFT = await ethers.getContractFactory("CredentialNFT");
-    const credentialNFT = await CredentialNFT.deploy();
-    await credentialNFT.waitForDeployment(); // Updated for ethers v6
-    console.log("CredentialNFT deployed to:", await credentialNFT.getAddress()); // Updated for ethers v6
+    const StakingAndIncentive = await ethers.getContractFactory("StakingAndIncentive");
+    const stakingAndIncentive = await StakingAndIncentive.deploy();
+    await stakingAndIncentive.waitForDeployment();
+    console.log("StakingAndIncentive deployed to:", await stakingAndIncentive.getAddress());
 
-    // Deploy VerificationOracle contract
-    const VerificationOracle = await ethers.getContractFactory("VerificationOracle");
-    const ccipRouter = process.env.CCIP_ROUTER_ADDRESS; // Set this in your .env file
-    const linkToken = process.env.LINK_TOKEN_ADDRESS; // Set this in your .env file
-    const verificationOracle = await VerificationOracle.deploy(ccipRouter, linkToken);
-    await verificationOracle.waitForDeployment(); // Updated for ethers v6
-    console.log("VerificationOracle deployed to:", await verificationOracle.getAddress()); // Updated for ethers v6
+    const ConflictResolution = await ethers.getContractFactory("ConflictResolution");
+    const conflictResolution = await ConflictResolution.deploy();
+    await conflictResolution.waitForDeployment();
+    console.log("ConflictResolution deployed to:", await conflictResolution.getAddress());
+
+    const ProposalManagement = await ethers.getContractFactory("ProposalManagement");
+    const proposalManagement = await ProposalManagement.deploy();
+    await proposalManagement.waitForDeployment();
+    console.log("ProposalManagement deployed to:", await proposalManagement.getAddress());
+
+    const CrossChainGovernance = await ethers.getContractFactory("CrossChainGovernance");
+    const crossChainGovernance = await CrossChainGovernance.deploy(
+        deployer.address, // treasury
+        deployer.address, // governanceToken
+        3,                // quorum
+        ethers.utils.parseEther("0.1") // proposalReward
+    );
+    await crossChainGovernance.waitForDeployment();
+    console.log("CrossChainGovernance deployed to:", await crossChainGovernance.getAddress());
+
+    const ReputationSystem = await ethers.getContractFactory("ReputationSystem");
+    const reputationSystem = await ReputationSystem.deploy();
+    await reputationSystem.waitForDeployment();
+    console.log("ReputationSystem deployed to:", await reputationSystem.getAddress());
+
+    const DAOGovernance = await ethers.getContractFactory("DAOGovernance");
+    const daoGovernance = await DAOGovernance.deploy(
+        votingMechanism.address,
+        stakingAndIncentive.address,
+        conflictResolution.address,
+        proposalManagement.address,
+        crossChainGovernance.address,
+        reputationSystem.address
+    );
+    await daoGovernance.waitForDeployment();
+    console.log("DAOGovernance deployed to:", await daoGovernance.getAddress());
 }
 
-main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-});
+main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
