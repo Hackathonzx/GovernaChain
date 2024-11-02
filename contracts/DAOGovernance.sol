@@ -21,7 +21,7 @@ contract DAOGovernance {
         address _stakingAndIncentive,
         address _conflictResolution,
         address _proposalManagement,
-        address payable _crossChainGovernance, // Change here to payable
+        address payable _crossChainGovernance,
         address _reputationSystem
     ) {
         votingMechanism = VotingMechanism(_votingMechanism);

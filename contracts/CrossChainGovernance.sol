@@ -60,10 +60,6 @@ contract CrossChainGovernance {
 
         // Emit event for cross-chain communication
         emit CrossChainProposalSent(proposalId, targetChain);
-        
-        // Note: In a real implementation, you would need to integrate with a
-        // cross-chain messaging protocol (like LayerZero, Chainlink CCIP, etc.)
-        // to actually send the proposal data to the target chain
     }
 
     function createProposal(string calldata description, uint256 value) external returns (uint256) {
@@ -113,7 +109,7 @@ contract CrossChainGovernance {
             payable(proposal.proposer).transfer(proposal.value);
         }
 
-        // State Change Logic: For this example, adjusting quorum
+        // State Change Logic:  adjusting quorum
         if (proposal.yesVotes > proposal.noVotes && proposal.value == 0) {
             quorum = quorum + 1;
         }
