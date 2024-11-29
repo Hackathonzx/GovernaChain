@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DAOGovernance system is a decentralized autonomous organization (DAO) governance framework built on Ethereum. It enables community-driven decision-making through proposal management, voting mechanisms, conflict resolution, Cross Chain functionality, staking and reputation systems. This project aims to facilitate effective governance for decentralized applications (dApps) while ensuring transparency and community engagement.
+The DAOGovernance system is a decentralized autonomous organization (DAO) governance framework built on the Linea chain. It enables community-driven decision-making through proposal management, voting mechanisms, conflict resolution, Cross Chain functionality, staking and reputation systems. This project aims to facilitate effective governance for decentralized applications (dApps) while ensuring transparency and community engagement.
 
 ### Features
 
@@ -132,17 +132,17 @@ All core functionalities were thoroughly tested, with all of the tests passing s
 
 # Deployment
 
-- Deploy the contract: npx hardhat run ignition/modules/deploy.js --network IntersectTestnet
+- Deploy the contract: npx hardhat run ignition/modules/deploy.js --network LineaSepolia
 
 Here are the deplyed script:
 
-- VotingMechanism deployed to: 0xE9B21a68b58584Ee399C2eC95885628D3472B9C1
-- StakingAndIncentive deployed to: 0xd3421C39343829ec2CB27e3Ddd834a0714411DFc
-- ConflictResolution deployed to: 0x9d0CF830BED49284679F39bD88059D9534B2Fdc7
-- ProposalManagement deployed to: 0x79969Ef250514Fa55AbF8589fe8842605f3b231d
-- CrossChainGovernance deployed to: 0xa56059F30bacA70C64e186518A990C549C6b03c1
-- ReputationSystem deployed to: 0x6AD88342995D8De2B6933cEC1ac6036d2744edc9
-- DAOGovernance deployed to: 0x6c8780eAb44017A65Cb5B1649D43aa246aD45c43
+- VotingMechanism deployed to: 0x2Fad953E1F524e6590EdF50BDA6FCB391Dd4Fd96
+- StakingAndIncentive deployed to: 0x359451AC3C73827A7653C0Ab7D30243844a55447
+- ConflictResolution deployed to: 0x069F92465a8795a06A28B1e85f320D57CE29Bc8F
+- ProposalManagement deployed to: 0x7c9D4E3769FD085566de1DB20E5703D3Ec50d37f
+- CrossChainGovernance deployed to: 0xe34c86A03F17E29F77beeE7c898Adae4dD578006
+- ReputationSystem deployed to: 0x7516abedc7e8ca01143ad636a6963B9887FC7Cf6
+- DAOGovernance deployed to: 0xA0BF7F60ec762cc7b88dEc415D46F12cFF130a55
 
 
 # Contributing
