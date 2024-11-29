@@ -134,7 +134,7 @@ All core functionalities were thoroughly tested, with all of the tests passing s
 
 - Deploy the contract: npx hardhat run ignition/modules/deploy.js --network LineaSepolia
 
-Here are the deplyed script:
+Here are the deployed contract addresses:
 
 - VotingMechanism deployed to: 0x2Fad953E1F524e6590EdF50BDA6FCB391Dd4Fd96
 - StakingAndIncentive deployed to: 0x359451AC3C73827A7653C0Ab7D30243844a55447
@@ -144,6 +144,23 @@ Here are the deplyed script:
 - ReputationSystem deployed to: 0x7516abedc7e8ca01143ad636a6963B9887FC7Cf6
 - DAOGovernance deployed to: 0xA0BF7F60ec762cc7b88dEc415D46F12cFF130a55
 
+Here are the links to the verified contracts:
+
+- Successfully verified contract VotingMechanism on the block explorer.
+   - https://sepolia.lineascan.build/address/address/0x2Fad953E1F524e6590EdF50BDA6FCB391Dd4Fd96#code
+
+- Successfully verified contract StakingAndIncentive on the block explorer.
+   - https://sepolia.lineascan.build/address/address/0x359451AC3C73827A7653C0Ab7D30243844a55447#code 
+
+- Successfully verified contract ConflictResolution on the block explorer.
+   - https://sepolia.lineascan.build/address/address/0x069F92465a8795a06A28B1e85f320D57CE29Bc8F#code  
+
+- Successfully verified contract ProposalManagement on the block explorer.
+   - https://sepolia.lineascan.build/address/address/0x7c9D4E3769FD085566de1DB20E5703D3Ec50d37f#code
+
+
+
+- 
 
 # Contributing
 - Fork the Repository:
